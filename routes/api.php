@@ -18,4 +18,7 @@ use App\Http\Controllers\vueTaskController;
 
 Route::group(['namespace' => 'App\Http\Controllers', 'prefix' => 'vueTask'], function () {
     Route::resource('/', vueTaskController::class);
+    Route::get('/{id}', 'VueTaskController@show');
+    Route::put('/{id}', 'VueTaskController@update');
+    Route::delete('/{id}', 'VueTaskController@destroy');
 });
