@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class vueTaskModel extends Model
 {
     use HasFactory;
+
+    protected $table = 'items';
 }
