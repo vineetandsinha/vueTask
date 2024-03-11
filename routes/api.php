@@ -16,9 +16,10 @@ use App\Http\Controllers\vueTaskController;
 */
 
 
-Route::group(['namespace' => 'App\Http\Controllers', 'prefix' => 'vueTask'], function () {
-    Route::resource('/', vueTaskController::class);
+Route::group(['namespace' => 'App\Http\Controllers', 'prefix' => 'vueTask', 'middleware' => ['api.logs', 'cors']], function () {
+    Route::resource('', vueTaskController::class);
     Route::get('/{id}', 'VueTaskController@show');
+    Route::post('/create', 'VueTaskController@store');
     Route::put('/{id}', 'VueTaskController@update');
     Route::delete('/{id}', 'VueTaskController@destroy');
 });

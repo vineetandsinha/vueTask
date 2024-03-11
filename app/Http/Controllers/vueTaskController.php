@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\vueTaskModel;
 use App\Http\Requests\vueTaskRequest;
 use App\Http\Resources\vueTaskResource;
+use App\Events\TaskAssigned;
 
 class vueTaskController extends Controller
 {
@@ -31,7 +32,7 @@ class vueTaskController extends Controller
      */
     public function create()
     {
-        dd('HSD');
+        
     }
 
     /**
@@ -52,6 +53,8 @@ class vueTaskController extends Controller
 
         $task->save();
         
+        event(new TaskAssigned($task));
+
     }
 
     /**
@@ -110,6 +113,7 @@ class vueTaskController extends Controller
             'id'        => $id,
             'update'    => vueTaskResource::collection($task_arr)
         ])->setStatusCode(200);
+
     }
 
     /**

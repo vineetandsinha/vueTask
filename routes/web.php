@@ -15,6 +15,3 @@ use Carbon\Carbon;
 |
 */
 
-Route::get('/', function () {
-    dd('HJDS');
-});
